@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Result</title>
+</head>
+<body>
+    
+    <!-- <ul th:if="${wordList}">
+        <li th:each="word : ${wordList}">
+            <p th:text="${word.wordValue}"></p>
+            <p th:text="${word.phonetics}"></p>
+            <p th:text="${word.meanings}"></p>
+            <p th:text="${word.license}"></p>
+            <p th:text="${word.srcUrl}"></p>
+        </li>
+    </ul>
+    <p th:unless="${wordList}">No results found.</p> -->
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Word</th>
+                <th>Definition</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr >
+                    <td data-th-text="${word.wordValue}"></td>
+                    <td data-th-text="${word.definition}"></td>
+                    <td>
+                </tr>
+               
+            </tbody>
+    </table>
+</body>
+</html>

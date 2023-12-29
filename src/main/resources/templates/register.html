@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Welcome to the dictionary!</h1> 
+    <br>
+    <h3>Register here:</h3>
+
+    <div class="card shadow-lg">
+        <div class="card-body p-5">
+        <form method="POST" data-th-action="@{/dictionary/registered}" data-th-object="${newUser}"> 
+            <table>
+                <tr>
+                    <td> 
+                        <label for="fullName">Full Name:</label> 
+                    </td>
+                    <td>
+                        <input type="text" id="fullName" size="30" 
+                                    placeholder="Please enter your full name" data-th-field="*{fullName}" >
+                            <label data-th-if="${#fields.hasErrors('fullName')}" data-th-errors="*{fullName}" style="color: red;"></label>
+                        </td>
+                </tr>
+                <tr>
+                    <td> 
+                        <label for="username">Username:</label> 
+                    </td>
+                    <td>
+                        <input type="text" id="username" size="30" 
+                                    placeholder="Please enter your username" data-th-field="*{username}" >
+                            <label data-th-if="${#fields.hasErrors('username')}" data-th-errors="*{username}" style="color: red;"></label>
+                        </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password">Password:</label>
+                    </td>
+                    <td>
+                        <input type="password" id="password" size="30" 
+                                placeholder="Please enter your password" data-th-field="*{password}">
+                        <label data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}" style="color: red;"></label>
+                    </td>
+                </tr>
+                <td>
+                    <label for="password">Confirm Password:</label>
+                </td>
+                <td>
+                    <input type="password" id="password" size="30" 
+                            placeholder="Please confirm your password" data-th-field="*{confirmedPassword}">
+                    <label data-th-if="${#fields.hasErrors('confirmedPassword')}" data-th-errors="*{confirmedPassword}" style="color: red;"></label>
+                </td>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit">Register</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    
+    <div class="text-center mt-5 text-muted">
+        Copyright © 2023 XYZ Foundation
+    </div>
+    
+</body>
+</html>

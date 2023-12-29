@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <H1> Home </H1> 
+
+    <a data-th-href="@{/dictionary/search}">
+        <button type="button">
+            <h3>Check Dictionary</h3>
+        </button>
+    </a>
+    <br>
+    <br>
+    <a data-th-href="@{/dictionary/logout}">
+        <button type="button">
+            <h3>Logout</h3>
+        </button>
+    </a>
+    <br>
+    <br>
+    <a data-th-href="@{/dictionary/history/{username}(username=${username})}">
+        <button type="button">
+            <h3>History</h3>
+        </button>
+    </a>
+    
+   
+</body>
+</html>
