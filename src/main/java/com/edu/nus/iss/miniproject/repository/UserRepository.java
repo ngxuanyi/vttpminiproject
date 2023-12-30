@@ -22,7 +22,7 @@ public class UserRepository {
 
     // retrieve existing user
     public String getUser (User user){
-        String u = vOps.get(user.getUsername());
-        return u;
+        String existingUser = vOps.get(user.getUsername());
+        return existingUser;
     }
 }
