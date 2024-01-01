@@ -80,7 +80,7 @@
         <div>
             <h3>Register here:</h3>
         </div>
-        <form method="POST" data-th-action="@{/dictionary/registered}" data-th-object="${newUser}"> 
+        <form method="POST" data-th-action="@{/dictionary/registered}" data-th-object="${newUser}" onsubmit="return checkPasswords()"> 
             <table>
                 <tr>
                     <td> 
@@ -113,10 +113,10 @@
                     </td>
                 </tr>
                 <td>
-                    <label for="password">Confirm Password:</label>
+                    <label for="confirmedPassword">Confirm Password:</label>
                 </td>
                 <td>
-                    <input type="password" id="password" size="30" 
+                    <input type="password" id="confirmedPassword" size="30" 
                             placeholder="Please confirm your password" data-th-field="*{confirmedPassword}">
                     <label data-th-if="${#fields.hasErrors('confirmedPassword')}" data-th-errors="*{confirmedPassword}" style="color: red;"></label>
                 </td>
@@ -139,5 +139,33 @@
           </div>
         </section>
       </footer>
+
+      <script>
+        function checkPasswords() {
+
+            // Retrieve the values from the input fields
+            var password = document.getElementById("password").value;
+            var confirmedPassword = document.getElementById("confirmedPassword").value;
+
+            // Check if passwords match       
+            if (password != confirmedPassword){
+                alert("Passwords do not match. Please try again.");
+                return false;
+
+            } else {
+                return true;
+            }
+        }
+    </script>
+
+    <!-- <script>
+        console.log("Script loaded.");
+    
+        function checkPasswords() {
+            console.log("Function called.");
+            return true;  // Allow the form to be submitted
+        }
+    </script> -->
+    
 </body>
 </html>
