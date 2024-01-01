@@ -11,7 +11,7 @@
     <style> 
         .social-icon {
           color: dimgrey;
-          margin-right: 15px; 
+          margin-right: 30px; 
         }
     </style>
 
@@ -70,6 +70,58 @@
             </ul>
         </div>
     </nav>
-    
+    <div class="text-center" style="margin: 40px; padding-right: 30px;">
+    <h3> Documentation </h3>
+    <p> Please read the documentation below on how to use the XYZ Dictionary free API. This public API should only be used for testing, personal or infrequent use. </p>
+
+    </div>
+<style>
+.card {
+        margin: 0 150px; 
+      }
+      
+</style>
+    <section>
+        <div class="card shadow-lg" style="padding: 30px;">
+            <div class="text-center">
+            <p><strong>Purpose of the API: </strong> Get word definitions </p>
+            <p><strong>How to use: </strong> The basic syntax of a URL request to the API is shown below:</p>
+            <p> <a href="#" class="link-underline-primary"> https://api.result?word=[query param value]</a></p>
+            <p>As an example, to get definition of English word <code>code</code>, you can send request to:</p>
+            <a href="https://api.result?word=code">https://api.result?word=code</a>
+            <p></p>
+            <br>
+            </div>
+            <!-- <pre> -->
+            <div class="card shadow-lg">
+                <div class="card-body" style="background-color: rgba(230, 227, 226, 0.914);">
+                <div>
+            <!-- <span class="rounded-0" style="color: burlywood;"> -->
+            <code class="lh-base">
+                {
+                    <br>
+            "wordValue": "code", 
+            <br>
+            "validity": "true",
+            <br>
+            "definition": "1. A body of law, sanctioned by legislation, in which the rules of law to be specifically applied by the courts are set forth in systematic form; a compilation of laws by public authority; a digest. Note: The collection of laws made by the order of Justinian is sometimes called, by way of eminence. \"The Code\" Wharton. 2. Any system of rules or regulations relating to one subject; as, the medical code, a system of rules for the regulation of the professional conduct of physicians; the naval code, a system of rules for making communications at sea means of signals. Code civil or Code Napoleon, a code enacted in France in 1803 and 1804, embodying the law of rights of persons and of property generally. Abbot."
+            <br>
+            }
+        </code>
+    </span>
+    </section>
+    <!-- </pre> -->
+
+
+    <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        </section>
+          <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.05);">
+            Copyright © 2023 XYZ Foundation
+          </div>
+        </section>
+      </footer>
+
+      
 </body>
 </html>

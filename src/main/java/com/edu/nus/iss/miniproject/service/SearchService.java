@@ -45,7 +45,6 @@ public class SearchService {
     String validity = String.valueOf(outputObject.getBoolean("valid"));
     Word newWord = new Word(wordValue, validity, definition);
     
-    
     return newWord;
     
 }

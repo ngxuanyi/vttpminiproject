@@ -69,27 +69,27 @@ public class MainController {
 
     // access home page
     @PostMapping("/home")
-    public String loginSuccess (@Valid @ModelAttribute("user") User user, BindingResult binding, HttpSession session, @RequestBody MultiValueMap<String,String> loginForm, Model model) {
+    public String loginSuccess (@Valid @ModelAttribute("user") User user, BindingResult binding, HttpSession session, Model model) {
         if (binding.hasErrors()) {
             return "login";
         } else {
-            String username = loginForm.getFirst("username");
-            System.out.printf("username check: %s\n", username);
-            session.setAttribute("username", username);
-            
+            String currUser = user.getUsername();
+            session.setAttribute("username", currUser);
+            //session.getAttribute("username");
             //String currUser = (String) session.getAttribute("username");
-            model.addAttribute("username", username);
-            //System.out.printf("username check @ home (post): %s\n", currUser);
+            model.addAttribute("username", session.getAttribute("username"));
+            //System.out.printf("username check @ home (post): %s\n",session.getAttribute("username"));
             return "home";
         }
     }
 
     @GetMapping("/home")
         public String getHome(Model model, HttpSession session) {
-            model.addAttribute("user", new User());
+            model.addAttribute("username", session.getAttribute("username"));
+            //model.addAttribute("user", new User());
             
-            String currUser = (String)session.getAttribute("username");
-            System.out.printf("username check @ home (get): %s\n", currUser);
+            //String currUser = (String)session.getAttribute("username");
+            //System.out.printf("username check @ home (get): %s\n", session.getAttribute("username"));
             return "home";
         }
 
@@ -98,8 +98,8 @@ public class MainController {
     @GetMapping("/search")
     public String getSearch(Model model, HttpSession session) {
         model.addAttribute("searchInput", new Word());
-        String currUser = (String)session.getAttribute("username");
-        System.out.printf("username check @ home (get): %s\n", currUser);
+        model.addAttribute("username", session.getAttribute("username"));
+        //System.out.printf("username check @ search (get): %s\n", session.getAttribute("username"));
         return "search";
     }
 
@@ -108,46 +108,48 @@ public class MainController {
     public String sendSearch (@Valid @ModelAttribute("searchInput") Word searchInput, BindingResult binding, @RequestBody MultiValueMap<String, String> body, @ModelAttribute("newUser") NewUser user, Model model, HttpSession session) {
         if (binding.hasErrors()) {
             
-                return "search";
+            return "search";
 
-            } else {
-            String username = (String)session.getAttribute("username");
+        } 
+        else {
+            model.addAttribute("username", session.getAttribute("username"));
+            //String username = (String)session.getAttribute("username");
             //System.out.println(username);
             String wordInput = body.getFirst("wordValue"); // get input from form
             
             Word definedWord = dbSvc.getWord(wordInput); // make API call to https://api.api-ninjas.com/v1/dictionary?word=
                 
-            if (!definedWord.getDefinition().isEmpty())
-            {
+            if (!definedWord.getDefinition().isEmpty()) {
                 model.addAttribute("word", definedWord);
-
-                searchRepo.saveSearchInput(username, definedWord); //save the word into repo (history list)
+                searchRepo.saveSearchInput((String)session.getAttribute("username"), definedWord); //save the word into repo (history list)
                     return "result";
-                    } 
-                    else {
+                } 
+                else {
                     model.addAttribute("searchInput", wordInput);
                     return "searcherror";
                 }
+            }
         }
-    }
 
     // access user search history
     
     @GetMapping ("/history/{username}")
     public String getSearchHistory (@PathVariable(name = "username", required = true) String username, Word word, Model model, HttpSession session){
-        String currUser = (String)session.getAttribute("username");
-        Map<String,String> searchList = searchRepo.getAllHistory(username, word);
+        
+        Map<String,String> searchList = searchRepo.getAllHistory((String)session.getAttribute("username"), word);
         //System.out.println(searchList);
         model.addAttribute("history", searchList);
-        System.out.printf("username check @ hist (get): %s\n", username);
-        model.addAttribute("username", username);
-        //model.addAttribute("user1", user1);
+        //System.out.printf("username check @ hist (get): %s\n", username);
+        model.addAttribute("username", session.getAttribute("username"));
+        //model.addAttribute("username", username);
         return "history";
     }
 
-    // @PostMapping ("/history/{username}")
-    // public String 
-
+    @GetMapping ("/docs")
+    public String getDocs (Model model, HttpSession session){
+        model.addAttribute("username", session.getAttribute("username"));
+        return "docs";
+    }
 
     // log out and end session
     @GetMapping("/logout")

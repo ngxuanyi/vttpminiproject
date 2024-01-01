@@ -72,10 +72,32 @@
             </ul>
         </div>
     </nav>
-    
-    <H1> Home </H1> 
 
-    <a data-th-href="@{/dictionary/search}">
+    <div class="text-center" style="margin: 40px; padding-right: 30px;">
+    <H3> Home </H3> 
+    <p> Welcome back!</p>
+    </div>
+
+   <style>
+          .contact-icon {
+              margin-right: 20px; 
+              text-align:left;
+          }
+      </style> 
+
+<div class="card shadow-lg">
+    <div class="card-body" style="padding: 70px; background-color: rgba(255, 216, 201, 0.945);">
+    <div>
+        <div class="text-center p-1.5" > 
+
+            <span class="contact-icon"> <i class="bi bi-house-door-fill"></i> Singapore 733223, Singapore </span>
+            <span class="contact-icon"> <i class="bi bi-envelope-fill"></i> xyzdictionary@gmail.com </span>
+            <span class="contact-icon"> <i class="bi bi-telephone-fill"></i> +65 6322 8333 </span>
+            
+        </div>
+    </div>
+
+    <!-- <a data-th-href="@{/dictionary/search}">
         <button type="button">
             <h3>Check Dictionary</h3>
         </button>
@@ -93,30 +115,17 @@
         <button type="button">
             <h3>History</h3>
         </button>
-    </a>
+    </a> -->
     
-    <footer class="text-center text-lg-start bg-body-tertiary text-muted fixed-bottom">
-      
-          
-      <!-- <style>
-          .contact-icon {
-              margin-right: 20px; 
-              text-align:left;
-          }
-      </style> -->
-        <!-- <div class="text-center p-1.5" style="background-color: rgba(87, 86, 86, 0.2);"> -->
 
-            <!-- <span class="contact-icon"> <i class="bi bi-house-door-fill"></i> Singapore 733223, Singapore </span>
-            <span class="contact-icon"> <i class="bi bi-envelope-fill"></i> info@example.com </span>
-            <span class="contact-icon"> <i class="bi bi-telephone-fill"></i> +65 6322 8333 </span> -->
-            <!-- <span class="text-end"> Copyright © 2023 XYZ Foundation </span>
-        </div> -->
     
-        <div class="text-center mt-5 text-muted">
+      <footer class="text-center text-lg-start bg-body-tertiary text-muted fixed-bottom">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        </section>
+          <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.05);">
             Copyright © 2023 XYZ Foundation
-        </div>
-  
-      </section>
+          </div>
+        </section>
       </footer>
    
 </body>
