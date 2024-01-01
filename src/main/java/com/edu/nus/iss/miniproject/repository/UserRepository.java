@@ -17,7 +17,7 @@ public class UserRepository {
     
     // register new user
      public void addUser (NewUser newUser){ 
-        vOps.set(newUser.getUsername(), newUser.getPassword());
+        vOps.setIfAbsent(newUser.getUsername(), newUser.getPassword());
     }
 
     // retrieve existing user
