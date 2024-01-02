@@ -1,5 +1,6 @@
-FROM openjdk:21-bookworm AS builder
-WORKDIR /src
+FROM openjdk:21-bookworm 
+
+WORKDIR /app
 
 COPY .mvn .mvn
 COPY src src
@@ -8,11 +9,17 @@ COPY pom.xml .
 
 RUN ./mvnw package -Dmaven.test.skip=true
 
-FROM openjdk:21-bookworm
+ENV REDIS_HOST=localhost 
+ENV REDIS_PORT=6379
+ENV REDIS_DATABASEUSER=0
+ENV REDIS_DATABASEWORD=1
+ENV REDIS_USERNAME=
+ENV REDIS_PASSWORD=
+ENV DICTIONARYAPI_KEY=abc123
 
-WORKDIR /app
 
-COPY --from=builder src/target/eventmanagement-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE ${PORT}
+
 ENV PORT=8080
 
-ENTRYPOINT SERVER_PORT=${PORT} java -jar ./app.jar
+ENTRYPOINT SERVER_PORT=${PORT} java -jar target/miniproject-0.0.1-SNAPSHOT.jar

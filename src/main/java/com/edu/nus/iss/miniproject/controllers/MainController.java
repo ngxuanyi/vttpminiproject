@@ -105,7 +105,6 @@ public class MainController {
             return "login";
         }
     }
-        
         else {
             binding.rejectValue("username", "username does not match", "username incorrect. Please try again");
             return "login";
@@ -114,8 +113,6 @@ public class MainController {
     
 }
     
-    
-
     @GetMapping("/home")
         public String getHome(Model model, HttpSession session) {
             model.addAttribute("username", session.getAttribute("username"));
@@ -150,11 +147,12 @@ public class MainController {
             //System.out.println(username);
             String wordInput = body.getFirst("wordValue"); // get input from form
             
-            Word definedWord = dbSvc.getWord(wordInput); // make API call to https://api.api-ninjas.com/v1/dictionary?word=
-                
+            Word definedWord = dbSvc.getWord(wordInput);
+            //Word definedWord = dbSvc.getWord(wordInput); // make API call to https://api.api-ninjas.com/v1/dictionary?word=
+            searchRepo.saveSearchInput((String)session.getAttribute("username"), definedWord); //save the word into repo (history list)
             if (!definedWord.getDefinition().isEmpty()) {
                 model.addAttribute("word", definedWord);
-                searchRepo.saveSearchInput((String)session.getAttribute("username"), definedWord); //save the word into repo (history list)
+                
                     return "result";
                 } 
                 else {
@@ -169,7 +167,7 @@ public class MainController {
     @GetMapping ("/history/{username}")
     public String getSearchHistory (@PathVariable(name = "username", required = true) String username, Word word, Model model, HttpSession session){
         
-        Map<String,String> searchList = searchRepo.getAllHistory((String)session.getAttribute("username"), word);
+        List<Word> searchList = searchRepo.getAllHistory((String)session.getAttribute("username"));
         //System.out.println(searchList);
         model.addAttribute("history", searchList);
         //System.out.printf("username check @ hist (get): %s\n", username);

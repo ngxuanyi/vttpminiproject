@@ -1,6 +1,8 @@
 package com.edu.nus.iss.miniproject.service;
 
 import java.io.StringReader;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,8 @@ import jakarta.json.JsonReader;
 @Service
 public class SearchService {
 
-//    @Value("${newsapi.key}")
-//    private String apiKey;
+   @Value("${dictionaryapi.key}")
+   private String apiKey;
 
 
     // returns the word 
@@ -28,7 +30,7 @@ public class SearchService {
             .toUriString();
 
     RequestEntity<Void> req = RequestEntity.get(url)
-        .header("X-Api-Key", "WP6tYwpBUKQPcMNoHBD5kQ==EFCu0AkXaBYQs4Xi") //to change it back
+        .header("X-Api-Key", apiKey) 
         .build();
 
     RestTemplate template = new RestTemplate();

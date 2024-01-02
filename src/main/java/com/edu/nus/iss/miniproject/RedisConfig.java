@@ -34,7 +34,6 @@ public class RedisConfig {
     @Value("${redis.password}")
     private String redisPassword;
 
-
     @Value("${redis.databaseUser}")
     private Integer redisUserDatabase;
 
@@ -75,8 +74,8 @@ public class RedisConfig {
         
         template.setKeySerializer(stringRedisSerializer);
         template.setValueSerializer(stringRedisSerializer);
-        template.setHashKeySerializer(stringRedisSerializer);
-        template.setHashValueSerializer(stringRedisSerializer);
+        // template.setHashKeySerializer(stringRedisSerializer);
+        // template.setHashValueSerializer(stringRedisSerializer);
         return template;
     }
 

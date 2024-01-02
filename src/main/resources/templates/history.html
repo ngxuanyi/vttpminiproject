@@ -103,9 +103,9 @@
         </thead>
         <tbody>
             <tr data-th-each="entry:${history}">
-                <td data-th-text="${entry.key}" class="text-capitalize text-center"></td>
-                <td data-th-if="${entry.value == ''}" class="text-center fst-italic" style="color: crimson; padding-right: 195px;">Word is invalid</td>
-                <td data-th-unless="${entry.value == ''}" data-th-text="${entry.value}" class="lh-base"></td>
+                <td data-th-text="${entry.wordValue}" class="text-capitalize text-center"></td>
+                <td data-th-if="${entry.definition == ''}" class="text-center fst-italic" style="color: crimson; padding-right: 195px;">Word is invalid</td>
+                <td data-th-unless="${entry.definition == ''}" data-th-text="${entry.definition}" class="lh-base"></td>
             </tr>
         </tbody>
         </table>
