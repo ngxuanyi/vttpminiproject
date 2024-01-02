@@ -1,5 +1,6 @@
 package com.edu.nus.iss.miniproject.repository;
 
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
@@ -12,13 +13,28 @@ import jakarta.annotation.Resource;
 public class UserRepository {
     
      @Resource(name = "userRedisTemplate")
+    private RedisTemplate <String, String> template;
 
+    @Resource(name = "userRedisTemplate")
      private ValueOperations<String, String> vOps;
     
-    // register new user
+    //register new user
      public void addUser (NewUser newUser){ 
-        vOps.setIfAbsent(newUser.getUsername(), newUser.getPassword());
+        //System.out.printf("UserNameRepo:%s",newUser.getUsername());
+        vOps.set(newUser.getUsername(), newUser.getPassword());
     }
+
+    // public boolean hasUser(NewUser newUser) {
+    //     return vOps.setIfAbsent(newUser.getUsername(), newUser.getPassword());
+    // }
+
+    // public boolean hasUser(User user){
+    //     return template.hasKey(user.getUsername());
+    // }
+    public boolean hasUser(String username){
+        return template.hasKey(username);
+    }
+
 
     // retrieve existing user
     public String getUser (User user){

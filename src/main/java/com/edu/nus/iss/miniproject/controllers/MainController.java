@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,9 +54,22 @@ public class MainController {
         if (binding.hasErrors()) {
             return "register";
         } else {
-            userRepo.addUser(newUser);
-            return "registered";
+            //userRepo.addUser(newUser);
+            if (userRepo.hasUser(newUser.getUsername())){
+                 binding.rejectValue("username", "username already exists", "username not available. Please choose a new username");
+                return "register";
+            } else {
+                //System.out.printf("\nusername:%s , password:%s\n",newUser.getUsername(),newUser.getPassword());
+               userRepo.addUser(newUser);
+                return "registered";
+            // } else {
+            //     userRepo.addUser(newUser);
+            //     return "registered";
+            // }
+                // FieldError error = new FieldError("form", "username", "username not available. Please choose a new username");
+            // return "register";
         }
+    }
     }
     
     // access login page
