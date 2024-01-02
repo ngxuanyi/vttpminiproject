@@ -41,4 +41,14 @@ public class UserRepository {
         String existingUser = vOps.get(user.getUsername());
         return existingUser;
     }
+
+    // retrieve existing user
+    public boolean checkPassword (String username, User user){
+        //System.out.printf("UserNameRepo:%s\n",username);
+
+        return vOps.get(username).equals(user.getPassword());
+        //System.out.printf("usernameUser:%s\n",user.getUsername());
+        // System.out.println(bool);
+        // return bool;
+    }
 }

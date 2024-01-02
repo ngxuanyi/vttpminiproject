@@ -88,14 +88,33 @@ public class MainController {
             return "login";
         } else {
             String currUser = user.getUsername();
-            session.setAttribute("username", currUser);
-            //session.getAttribute("username");
-            //String currUser = (String) session.getAttribute("username");
-            model.addAttribute("username", session.getAttribute("username"));
-            //System.out.printf("username check @ home (post): %s\n",session.getAttribute("username"));
-            return "home";
+            //System.out.printf("username check : %s\n",currUser);
+            
+            if (userRepo.hasUser(currUser)){
+                if (userRepo.checkPassword(currUser, user)){
+                //String currUser = user.getUsername();
+                session.setAttribute("username", currUser);
+                //session.getAttribute("username");
+                //String currUser = (String) session.getAttribute("username");
+                model.addAttribute("username", currUser);
+                //System.out.printf("username check @ home (post): %s\n",session.getAttribute("username"));
+                return "home";
+                } 
+                else {
+                     binding.rejectValue("password", "password does not match", "password incorrect. Please try again");
+            return "login";
         }
     }
+        
+        else {
+            binding.rejectValue("username", "username does not match", "username incorrect. Please try again");
+            return "login";
+        }
+    }
+    
+}
+    
+    
 
     @GetMapping("/home")
         public String getHome(Model model, HttpSession session) {

@@ -1,15 +1,18 @@
 package com.edu.nus.iss.miniproject.model;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public class NewUser {
     @NotBlank (message = "please input your full name")
     private String fullName;
     
     @NotBlank (message = "please set a username")
+    @Size (min = 3, max = 50, message = "minimum of 3 characters and maximum of 50 characters allowed")
     private String username;
 
     @NotBlank (message = "please set a password")
+    @Size (min = 3, max = 50, message = "minimum of 3 characters and maximum of 50 characters allowed")
     private String password;
 
     @NotBlank (message = "please confirm your password")

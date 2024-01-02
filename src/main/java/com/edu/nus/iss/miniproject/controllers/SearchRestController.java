@@ -23,11 +23,12 @@ import jakarta.json.JsonObject;
 @RestController
 @RequestMapping(path = "/dictionary/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class SearchRestController {
+    
     @Autowired
     private SearchService dbSvc;
 
-    @Autowired
-    private SearchRepository searchRepo;
+    // @Autowired
+    // private SearchRepository searchRepo;
 
     @GetMapping("/result")
     public Word getResult(@RequestParam String word) {
