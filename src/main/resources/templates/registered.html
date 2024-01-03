@@ -53,10 +53,10 @@
         <div>
             <ul class="nav navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true" href="#" style="color: #060606;">Placeholderss</a>
+                    <a class="nav-link disabled" aria-disabled="true" href="#" style="color: #060606;">Placeholdersssss</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-th-href="@{/dictionary/register}">Register</a>
+                    <a class="nav-link active" aria-current="page" data-th-href="@{/dictionary/register}">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-th-href="@{/dictionary/login}">Login</a>
@@ -68,12 +68,23 @@
         </div>
     </nav>
 
-    <h3>You have registered successfully!☺</h3>
-
+    <div  class="text-center" style="margin: 30px; padding-right: 30px;" >
+        
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="#AEAFA5" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+              </svg>
+    <h3 style="padding-top: 20px; padding-bottom: 10px;">Success!</h3>
+  
+    <p> Congratulations, your account has been successfully created.</p>
+        </div>
+    <div class="card-shadow-lg p-4 text-center" style="background-color: #d8d8d8; margin-right: 290px; margin-left: 290px; padding-right: 30px;">
+    <p class="fw-bold" style="padding-bottom: 20px;"> Start your learning journey today >>> </p>
     <a data-th-href= "@{/dictionary/login}"> 
         <button type="button"> Go back to the login page 
         </button>
     </a>
+    <p class="fw-light" style="font-style: italic; padding-left: 70px; padding-right: 70px; padding-top: 35px;"> “Knowledge is the greatest power and it is something no one can see. It cannot be stolen or broken, no one can take it from you.” - John Carrick</p>
+    </div>
 
     <footer class="text-center text-lg-start bg-body-tertiary text-muted fixed-bottom">
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">

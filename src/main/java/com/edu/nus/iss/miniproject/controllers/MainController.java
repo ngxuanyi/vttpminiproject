@@ -54,7 +54,6 @@ public class MainController {
         if (binding.hasErrors()) {
             return "register";
         } else {
-            //userRepo.addUser(newUser);
             if (userRepo.hasUser(newUser.getUsername())){
                  binding.rejectValue("username", "username already exists", "username not available. Please choose a new username");
                 return "register";
@@ -62,12 +61,6 @@ public class MainController {
                 //System.out.printf("\nusername:%s , password:%s\n",newUser.getUsername(),newUser.getPassword());
                userRepo.addUser(newUser);
                 return "registered";
-            // } else {
-            //     userRepo.addUser(newUser);
-            //     return "registered";
-            // }
-                // FieldError error = new FieldError("form", "username", "username not available. Please choose a new username");
-            // return "register";
         }
     }
     }
@@ -92,10 +85,7 @@ public class MainController {
             
             if (userRepo.hasUser(currUser)){
                 if (userRepo.checkPassword(currUser, user)){
-                //String currUser = user.getUsername();
                 session.setAttribute("username", currUser);
-                //session.getAttribute("username");
-                //String currUser = (String) session.getAttribute("username");
                 model.addAttribute("username", currUser);
                 //System.out.printf("username check @ home (post): %s\n",session.getAttribute("username"));
                 return "home";
@@ -116,9 +106,7 @@ public class MainController {
     @GetMapping("/home")
         public String getHome(Model model, HttpSession session) {
             model.addAttribute("username", session.getAttribute("username"));
-            //model.addAttribute("user", new User());
             
-            //String currUser = (String)session.getAttribute("username");
             //System.out.printf("username check @ home (get): %s\n", session.getAttribute("username"));
             return "home";
         }
@@ -143,7 +131,6 @@ public class MainController {
         } 
         else {
             model.addAttribute("username", session.getAttribute("username"));
-            //String username = (String)session.getAttribute("username");
             //System.out.println(username);
             String wordInput = body.getFirst("wordValue"); // get input from form
             
@@ -172,7 +159,6 @@ public class MainController {
         model.addAttribute("history", searchList);
         //System.out.printf("username check @ hist (get): %s\n", username);
         model.addAttribute("username", session.getAttribute("username"));
-        //model.addAttribute("username", username);
         return "history";
     }
 

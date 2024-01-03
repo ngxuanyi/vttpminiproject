@@ -76,31 +76,78 @@
     <div class="text-center" style="margin: 40px; padding-right: 30px;">
     <H3> Home </H3> 
     </div>
-    <div class="text-center" style="margin: 40px; padding-right: 30px;">
+    <div class="text-center" style="margin: 30px; padding-right: 30px;">
     <span> Welcome back,</span> 
-    <span class="fw-bold" data-th-object="${username}" data-th-text="${username}" style="font-style: italic;"></span> 
+    <span class="fw-bold" data-th-object="${username}" data-th-text="${username}" style="font-style: italic;"></span>
     <span>!</span>
+    <br> 
+    <p class="fw-light" style="font-style: italic; padding-top: 20px;">"Education is the most powerful weapon which you can use to change the world.” – Nelson Mandela</p>
     </div>
 
-   <style>
+   <!-- <style>
           .contact-icon {
               margin-right: 20px; 
               text-align:left;
           }
-      </style> 
+      </style>  -->
 
-<div class="card shadow-lg">
-    <div class="card-body" style="padding: 70px; background-color: rgba(255, 216, 201, 0.945);">
-    <div>
-        <div class="text-center p-1.5" > 
-            <p>Contact Us</p>
-            <span class="contact-icon"> <i class="bi bi-house-door-fill"></i> Singapore 733223, Singapore </span>
-            <span class="contact-icon"> <i class="bi bi-envelope-fill"></i> xyzdictionary@gmail.com </span>
-            <span class="contact-icon"> <i class="bi bi-telephone-fill"></i> +65 6322 8333 </span>
+<!-- <div class="card shadow-lg">
+    <div class="card-body" style="padding: 70px; background-color: rgba(211, 205, 203, 0.945);"> -->
+        <!-- <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0"> -->
+                <section class="container">
+                <div class="row">
+                <div class="col-sm-6">
+                    <div class="card" style="background-color: rgb(211, 212, 212);">
+                <div>
+                   
+        <div class=" card-body"> 
+            <p style="font-style: italic; padding-left: 20px;">Faced a problem or have a suggestion on how we can improve our application? </p>
+               <p style="font-style: italic; padding-left: 20px"> Feel free to contact us at:</p>
+            <p class="contact-icon" style="padding-top: 16px; padding-left: 20px;"> <i class="bi bi-house-door-fill"></i> Singapore 733223, Singapore </p>
             
+            <br>
+            <p class="contact-icon" style=" padding-left: 20px;"> <i class="bi bi-envelope-fill"></i> xyzdictionary@gmail.com </p>
+            
+            <br>
+            
+            <p class="contact-icon" style="padding-left: 20px;"> <i class="bi bi-telephone-fill"></i> +65 6322 8333 </p>
         </div>
     </div>
+    </div>
+    </div>
 
+    <!-- <div class="card-body" style="padding: 70px; background-color: rgba(211, 205, 203, 0.945);"> -->
+        <div class="col-sm-6">
+        <div class="card" style="background-color: rgb(211, 212, 212);">
+        <div>
+        <p style="padding-bottom: 10px; padding-top: 20px; padding-left: 30px;"> Not sure how to use XYZ Dictonary? Refer to below for more information: </p>
+        <table>
+            <thead>
+                <th class="text-uppercase fw-bold" style="padding-bottom: 20px; padding-left: 30px;">Index</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="padding-bottom: 20px; padding-left: 30px;">1. Home – this is your homepage</td>
+            </tr>
+            <tr>
+                <td style="padding-bottom: 20px; padding-left: 30px;">2. Dictionary – this is where you search for words</td>
+            </tr>
+            <tr>
+                <td style="padding-bottom: 20px; padding-left: 30px;">3. History – every search will saved here, along with the word's definition</td>
+            </tr>
+            <tr>
+                <td style="padding-bottom: 20px; padding-left: 30px;">4. Docs – you can get the link to the REST API from here</td>
+            </tr>
+            </tbody>
+</div>
+</section>
+
+<!-- <section class="container">
+<div>
+<p>"Education is the most powerful weapon which you can use to change the world.” – Nelson Mandela</p>
+</div>
+</section> -->
     <!-- <a data-th-href="@{/dictionary/search}">
         <button type="button">
             <h3>Check Dictionary</h3>
@@ -134,3 +181,5 @@
    
 </body>
 </html>
+
+

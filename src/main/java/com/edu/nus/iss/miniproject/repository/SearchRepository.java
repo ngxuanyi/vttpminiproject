@@ -36,10 +36,10 @@ public class SearchRepository {
 private ListOperations <String, String> lOps;
 
 public void saveSearchInput (String username, Word word){
-        System.out.printf("word definition:%s",word.getDefinition());
+       // System.out.printf("word definition:%s",word.getDefinition());
         String record = "%s!%s!%s".formatted(word.getWordValue(),word.getDefinition(),word.getValidity());
-        System.out.printf("\nWord Record:%s\n", record);
-        System.out.printf("\nUsername:%s\n", username);
+        //System.out.printf("\nWord Record:%s\n", record);
+        //System.out.printf("\nUsername:%s\n", username);
         lOps.leftPush(username, record);
     
 }
